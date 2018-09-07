@@ -2,16 +2,14 @@ package org.bitvector.stats;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.TreeMap;
 
 class Main {
 
     public static void main(String[] args) {
         DecimalFormat f = new DecimalFormat("0.00");
 
-        List<Integer> initList = new ArrayList<>();
+        ArrayList<Integer> initList = new ArrayList<>();
         initList.add(50);
         initList.add(23);
         initList.add(1);
@@ -28,7 +26,7 @@ class Main {
         System.out.println("StdDev: " + f.format(testIV.stdDeviation()));
         System.out.println("CoefOfVar: " + f.format(testIV.coefOfVariance()));
 
-        Map<Double, Double> initMap = new HashMap<>();
+        TreeMap<Double, Double> initMap = new TreeMap<>();
         initMap.put(1.0, (0.0 / 100));
         initMap.put(2.0, (5.0 / 100));
         initMap.put(4.0, (5.0 / 100));

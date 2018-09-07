@@ -1,15 +1,15 @@
 package org.bitvector.stats;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 class IntegerVector implements Statistics {
 
-    private List<Integer> vector;
+    private ArrayList<Integer> vector;
 
-    IntegerVector(List<Integer> vector) {
+    IntegerVector(ArrayList<Integer> vector) {
         this.vector = vector;
     }
 

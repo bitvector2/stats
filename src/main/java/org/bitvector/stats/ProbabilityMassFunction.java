@@ -1,13 +1,14 @@
 package org.bitvector.stats;
 
-import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 class ProbabilityMassFunction implements Statistics {
 
-    private Map<Double, Double> pmf;
-    private Map<Double, Double> lrRatio;
+    private TreeMap<Double, Double> pmf;
+    private TreeMap<Double, Double> lrRatios;
 
-    ProbabilityMassFunction(Map<Double, Double> pmf) {
+    ProbabilityMassFunction(TreeMap<Double, Double> pmf) {
         if (pmf.values().stream().mapToDouble(Double::doubleValue).sum() == 1.0) {
             this.pmf = pmf;
             initLRratio();
@@ -17,15 +18,16 @@ class ProbabilityMassFunction implements Statistics {
     }
 
     private void initLRratio() {
-        // FIXME
-    }
+        for (Double i : pmf.keySet()) {
+            SortedMap<Double, Double> leftMap = pmf.headMap(i, true);
+            SortedMap<Double, Double> rightMap = pmf.tailMap(i, true);
 
-    private Double massMidpoint() {
-        return 0.0; // FIXME
-    }
+            Double leftPsum = leftMap.values().stream().mapToDouble(Double::doubleValue).sum();
+            Double rightPsum = rightMap.values().stream().mapToDouble(Double::doubleValue).sum();
+            Double lrRatio = leftPsum / rightPsum;
 
-    private Double maxP() {
-        return 0.0; // FIXME
+            // FIXME System.out.println("Key: " + i + " Value: " + lrRatio);
+        }
     }
 
     public Double mean() {
