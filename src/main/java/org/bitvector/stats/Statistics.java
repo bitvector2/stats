@@ -1,12 +1,11 @@
-package org.bitvector.stats.lib;
-
+package org.bitvector.stats;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Statistics {
+class Statistics {
 
     static Double mean(List<Integer> vector) {
         // https://en.wikipedia.org/wiki/Mean#Arithmetic_mean_(AM)
@@ -18,13 +17,13 @@ public class Statistics {
     static Double median(List<Integer> vector) {
         // https://en.wikipedia.org/wiki/Median
 
-        double median;
         Collections.sort(vector);
+        double median;
 
         if (vector.size() % 2 == 0) {   // case of even size vector
             int overMidpoint = vector.size() / 2;
             int underMidpoint = overMidpoint - 1;
-            median = ((vector.get(underMidpoint) + vector.get(overMidpoint)) / 2.0);
+            median = (vector.get(underMidpoint) + vector.get(overMidpoint)) / 2.0;
 
         } else {                        // case of odd size vector
             int midpoint = vector.size() / 2;
@@ -76,7 +75,7 @@ public class Statistics {
             }
         }
 
-        // variance of entire population vs a subset - hence Sum(stuff) / (N-1);
+        // variance of entire population - hence Sum(stuff) / (N-1);
         return sum / (vector.size() - 1);
     }
 
@@ -93,27 +92,29 @@ public class Statistics {
         return stdDeviation(vector) / mean(vector) * 100;
     }
 
-    public static Double mean(ProbabilityMassFunction testPMF) {
+
+    static Double mean(ProbabilityMassFunction pmf) {
         return 0.0; // FIXME
     }
 
-    public static Double median(ProbabilityMassFunction testPMF) {
+    static Double median(ProbabilityMassFunction pmf) {
         return 0.0; // FIXME
     }
 
-    public static Integer mode(ProbabilityMassFunction testPMF) {
+    static Integer mode(ProbabilityMassFunction pmf) {
         return 0; // FIXME
     }
 
-    public static Double variance(ProbabilityMassFunction testPMF) {
+    static Double variance(ProbabilityMassFunction pmf) {
         return 0.0; // FIXME
     }
 
-    public static Double stdDeviation(ProbabilityMassFunction testPMF) {
+    static Double stdDeviation(ProbabilityMassFunction pmf) {
         return 0.0; // FIXME
     }
 
-    public static double coefOfVariance(ProbabilityMassFunction testPMF) {
+    static double coefOfVariance(ProbabilityMassFunction pmf) {
         return 0.0; // FIXME
     }
+
 }

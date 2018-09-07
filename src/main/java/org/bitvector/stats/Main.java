@@ -1,4 +1,4 @@
-package org.bitvector.stats.lib;
+package org.bitvector.stats;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
         DecimalFormat f = new DecimalFormat("##.00");
@@ -34,7 +34,6 @@ public class Main {
         initMap.put(15.0, (85.0 / 100));
         initMap.put(35.0, (5.0 / 100));
         initMap.put(100.0, (0.0 / 100));
-
         ProbabilityMassFunction testPMF = new ProbabilityMassFunction(initMap);
 
         System.out.println("*** PMF Stats ***");
@@ -44,9 +43,6 @@ public class Main {
         System.out.println("Variance: " + f.format(Statistics.variance(testPMF)));
         System.out.println("StdDev: " + f.format(Statistics.stdDeviation(testPMF)));
         System.out.println("CoefOfVar: " + f.format(Statistics.coefOfVariance(testPMF)));
-
-
     }
-
 
 }
