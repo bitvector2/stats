@@ -22,9 +22,9 @@ class ProbabilityMassFunction implements Statistics {
             SortedMap<Double, Double> leftMap = pmf.headMap(i, true);
             SortedMap<Double, Double> rightMap = pmf.tailMap(i, true);
 
-            Double leftPsum = leftMap.values().stream().mapToDouble(Double::doubleValue).sum();
-            Double rightPsum = rightMap.values().stream().mapToDouble(Double::doubleValue).sum();
-            Double lrRatio = leftPsum / rightPsum;
+            double leftPsum = leftMap.values().stream().mapToDouble(Double::doubleValue).sum();
+            double rightPsum = rightMap.values().stream().mapToDouble(Double::doubleValue).sum();
+            double lrRatio = leftPsum / rightPsum;
 
             // FIXME System.out.println("Key: " + i + " Value: " + lrRatio);
         }
