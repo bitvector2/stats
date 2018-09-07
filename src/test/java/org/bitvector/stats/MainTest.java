@@ -1,17 +1,17 @@
 package org.bitvector.stats;
 
+import org.apache.commons.math3.util.Precision;
 import org.junit.jupiter.api.Test;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.TreeMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MainTest {
 
     @Test
     void testIV() {
-        DecimalFormat f = new DecimalFormat("0.00");
-
         ArrayList<Integer> initList = new ArrayList<>();
         initList.add(50);
         initList.add(23);
@@ -22,18 +22,28 @@ public class MainTest {
         IntegerVector testIV = new IntegerVector(initList);
 
         System.out.println("*** IntegerVector Stats ***");
-        System.out.println("Mean: " + f.format(testIV.mean()));
-        System.out.println("Median: " + f.format(testIV.median()));
-        System.out.println("Mode: " + f.format(testIV.mode()));
-        System.out.println("Variance: " + f.format(testIV.variance()));
-        System.out.println("StdDev: " + f.format(testIV.stdDeviation()));
-        System.out.println("CoefOfVar: " + f.format(testIV.coefOfVariance()));
+
+        System.out.println("Mean: " + Precision.round(testIV.mean(), 2));
+        assertEquals(37.83, Precision.round(testIV.mean(), 2));
+
+        System.out.println("Median: " + Precision.round(testIV.median(), 1));
+        assertEquals(26.5, Precision.round(testIV.median(), 1));
+
+        System.out.println("Mode: " + testIV.mode());
+        assertEquals(23, Precision.round(testIV.mode(), 0));
+
+        System.out.println("Variance: " + Precision.round(testIV.variance(), 2));
+
+        System.out.println("StdDev: " + Precision.round(testIV.stdDeviation(), 2));
+        assertEquals(34.27, Precision.round(testIV.stdDeviation(), 2));
+
+        System.out.println("CoefOfVar: " + Precision.round(testIV.coefOfVariance(), 2));
+        assertEquals(90.57, Precision.round(testIV.coefOfVariance(), 2));
+
     }
 
     @Test
     void testPMF() {
-        DecimalFormat f = new DecimalFormat("0.00");
-
         TreeMap<Double, Double> initMap = new TreeMap<>();
         initMap.put(1.0, (0.0 / 100));
         initMap.put(2.0, (5.0 / 100));
@@ -44,12 +54,12 @@ public class MainTest {
         ProbabilityMassFunction testPMF = new ProbabilityMassFunction(initMap);
 
         System.out.println("*** ProbabilityMassFunction Stats ***");
-        System.out.println("Mean: " + f.format(testPMF.mean()));
-        System.out.println("Median: " + f.format(testPMF.median()));
-        System.out.println("Mode: " + f.format(testPMF.mode()));
-        System.out.println("Variance: " + f.format(testPMF.variance()));
-        System.out.println("StdDev: " + f.format(testPMF.stdDeviation()));
-        System.out.println("CoefOfVar: " + f.format(testPMF.coefOfVariance()));
+        System.out.println("Mean: " + testPMF.mean());
+        System.out.println("Median: " + testPMF.median());
+        System.out.println("Mode: " + testPMF.mode());
+        System.out.println("Variance: " + testPMF.variance());
+        System.out.println("StdDev: " + testPMF.stdDeviation());
+        System.out.println("CoefOfVar: " + testPMF.coefOfVariance());
     }
 
 }
