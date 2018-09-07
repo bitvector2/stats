@@ -15,7 +15,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <dependencies/>
+    <dependencies>
+    </dependencies>
 
     <build>
         <plugins>
@@ -60,7 +61,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>Main</mainClass>
+                                    <mainClass>org.bitvector.stats.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

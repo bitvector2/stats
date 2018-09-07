@@ -9,23 +9,24 @@ import java.util.Map;
 class Main {
 
     public static void main(String[] args) {
-        DecimalFormat f = new DecimalFormat("##.00");
+        DecimalFormat f = new DecimalFormat("0.00");
 
-        List<Integer> testVector = new ArrayList<>();
-        testVector.add(50);
-        testVector.add(23);
-        testVector.add(1);
-        testVector.add(23);
-        testVector.add(100);
-        testVector.add(30);
+        List<Integer> initList = new ArrayList<>();
+        initList.add(50);
+        initList.add(23);
+        initList.add(1);
+        initList.add(23);
+        initList.add(100);
+        initList.add(30);
+        IntegerVector testIV = new IntegerVector(initList);
 
-        System.out.println("*** Vector Stats ***");
-        System.out.println("Mean: " + f.format(Statistics.mean(testVector)));
-        System.out.println("Median: " + f.format(Statistics.median(testVector)));
-        System.out.println("Mode: " + f.format(Statistics.mode(testVector)));
-        System.out.println("Variance: " + f.format(Statistics.variance(testVector)));
-        System.out.println("StdDev: " + f.format(Statistics.stdDeviation(testVector)));
-        System.out.println("CoefOfVar: " + f.format(Statistics.coefOfVariance(testVector)));
+        System.out.println("*** IntegerVector Stats ***");
+        System.out.println("Mean: " + f.format(testIV.mean()));
+        System.out.println("Median: " + f.format(testIV.median()));
+        System.out.println("Mode: " + f.format(testIV.mode()));
+        System.out.println("Variance: " + f.format(testIV.variance()));
+        System.out.println("StdDev: " + f.format(testIV.stdDeviation()));
+        System.out.println("CoefOfVar: " + f.format(testIV.coefOfVariance()));
 
         Map<Double, Double> initMap = new HashMap<>();
         initMap.put(1.0, (0.0 / 100));
@@ -36,13 +37,13 @@ class Main {
         initMap.put(100.0, (0.0 / 100));
         ProbabilityMassFunction testPMF = new ProbabilityMassFunction(initMap);
 
-        System.out.println("*** PMF Stats ***");
-        System.out.println("Mean: " + f.format(Statistics.mean(testPMF)));
-        System.out.println("Median: " + f.format(Statistics.median(testPMF)));
-        System.out.println("Mode: " + f.format(Statistics.mode(testPMF)));
-        System.out.println("Variance: " + f.format(Statistics.variance(testPMF)));
-        System.out.println("StdDev: " + f.format(Statistics.stdDeviation(testPMF)));
-        System.out.println("CoefOfVar: " + f.format(Statistics.coefOfVariance(testPMF)));
+        System.out.println("*** ProbabilityMassFunction Stats ***");
+        System.out.println("Mean: " + f.format(testPMF.mean()));
+        System.out.println("Median: " + f.format(testPMF.median()));
+        System.out.println("Mode: " + f.format(testPMF.mode()));
+        System.out.println("Variance: " + f.format(testPMF.variance()));
+        System.out.println("StdDev: " + f.format(testPMF.stdDeviation()));
+        System.out.println("CoefOfVar: " + f.format(testPMF.coefOfVariance()));
     }
 
 }
